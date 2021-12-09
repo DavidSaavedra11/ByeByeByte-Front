@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "context/authContext";
+// import PrivateComponent from "./PrivateComponent";
+
 
 const SidebarLinks = () => {
   return (
@@ -22,9 +25,29 @@ const SidebarLinks = () => {
         title="Avances"
         icon="fas fa-globe-americas"
       />
+      <Logout />
     </ul>
   );
 };
+
+const Logout = () => {
+  const { setToken } = useAuth();
+  const deleteToken = () => {
+    console.log("eliminar token");
+    setToken(null);
+  };
+  return (
+    <li onClick={() => deleteToken()}>
+      <NavLink to="/auth/login" className="sidebar-route text-red-700">
+        <div className="flex items-center">
+          <i className="fas fa-sign-out-alt" />
+          <span className="text-sm  ml-2">Cerrar Sesión</span>
+        </div>
+      </NavLink>
+    </li>
+  );
+};
+
 
 const Logo = () => {
   return (
