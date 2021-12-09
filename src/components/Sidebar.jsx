@@ -6,7 +6,7 @@ import { useAuth } from "context/authContext";
 
 const SidebarLinks = () => {
   return (
-    <ul className="mt-6">
+    <ul className="mt-2">
       <SidebarRoute to="" title="Inicio" icon="fas fa-home" />
 
       <SidebarRoute
@@ -26,6 +26,7 @@ const SidebarLinks = () => {
         icon="fas fa-globe-americas"
       />
       <Logout />
+
     </ul>
   );
 };
@@ -38,10 +39,10 @@ const Logout = () => {
   };
   return (
     <li onClick={() => deleteToken()}>
-      <NavLink to="/auth/login" className="sidebar-route text-red-700">
+      <NavLink to="/auth/login" className="sidebar-route text-black">
         <div className="flex items-center">
           <i className="fas fa-sign-out-alt" />
-          <span className="text-sm  ml-2">Cerrar Sesión</span>
+          <span className="font-bold text-lg  ml-4">Cerrar Sesión</span>
         </div>
       </NavLink>
     </li>

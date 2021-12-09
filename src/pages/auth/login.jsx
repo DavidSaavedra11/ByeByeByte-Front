@@ -37,30 +37,36 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full p-10">
-      <h1 className="text-xl font-bold text-gray-900">Iniciar sesión</h1>
-      <form
-        className="flex flex-col"
-        onSubmit={submitForm}
-        onChange={updateFormData}
-        ref={form}
-      >
-        <Input name="correo" type="email" label="Correo" required={true} />
-        <Input
-          name="password"
-          type="password"
-          label="Contraseña"
-          required={true}
-        />
-        <ButtonLoading
-          disabled={Object.keys(formData).length === 0}
-          loading={mutationLoading}
-          text="Iniciar Sesión"
-        />
-      </form>
-      <span>¿No tienes una cuenta?</span>
-      <Link to="/auth/register">
-        <span className="text-blue-700">Regístrate</span>
-      </Link>
+      <div className=" rounded-lg border-2 p-4 bg-indigo-900 bg-opacity-75">
+        <h1 className="text-xl font-extrabold text-white ">Iniciar sesión</h1>
+        <form
+          className="flex flex-col"
+          onSubmit={submitForm}
+          onChange={updateFormData}
+          ref={form}
+        >
+          <div className="font-extrabold text-lg  ">
+            <Input name="correo" type="email" label="Correo" required={true} />
+            <Input
+              name="password"
+              type="password"
+              label="Contraseña"
+              required={true}
+            />
+          </div>
+          <ButtonLoading
+            disabled={Object.keys(formData).length === 0}
+            loading={mutationLoading}
+            text="Iniciar Sesión"
+          />
+        </form>
+        <span className="text-white font-extrabold m-4 ">
+          ¿No tienes una cuenta?
+        </span>
+        <Link to="/auth/register">
+          <span className="text-white font-bold m-4">Regístrate</span>
+        </Link>
+      </div>
     </div>
   );
 };

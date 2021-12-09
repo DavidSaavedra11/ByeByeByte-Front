@@ -21,9 +21,10 @@ const IndexUsuarios = () => {
   if (loading) return <div>Cargando....</div>;
 
   return (
-    <div>
-      Datos Usuarios:
-      <table className='tabla'>
+    <div className='bg-red-200 h-full'>
+      <span className='m-2 font-extrabold'>Datos Usuarios </span>
+
+      <table className="tabla">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -48,7 +49,7 @@ const IndexUsuarios = () => {
                   <td>{Enum_EstadoUsuario[u.estado]}</td>
                   <td>
                     <Link to={`/usuarios/editar/${u._id}`}>
-                      <i className='fas fa-pen text-yellow-600 hover:text-yellow-400 cursor-pointer' />
+                      <i className="fas fa-pen text-yellow-700 hover:text-red-400 cursor-pointer flex justify-center" />
                     </Link>
                   </td>
                 </tr>

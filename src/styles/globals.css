@@ -13,3 +13,12 @@
 .input {
   @apply p-2 border border-indigo-200 focus:outline-none focus:border-indigo-800 rounded-md shadow-sm;
 }
+
+.imageLogin {
+  width: full;
+  height: 650px;
+  background-image: url(/src/media/fondo12.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
