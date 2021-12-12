@@ -16,7 +16,7 @@ const IndexUsuarios = () => {
 
   useEffect(() => {
     if (error) {
-      toast.error('Error consultando los usuarios');
+      toast.error('Error consultando los Usuarios');
     }
   }, [error]);
 
