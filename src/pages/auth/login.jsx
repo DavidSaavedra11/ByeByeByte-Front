@@ -15,7 +15,7 @@ const Login = () => {
 
   const [
     login,
-    { data: dataMutation, loading: mutationLoading, error: mutationError },
+    { data: dataMutation, loading: mutationLoading },
   ] = useMutation(LOGIN);
 
   const submitForm = (e) => {

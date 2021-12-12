@@ -17,7 +17,8 @@ const Register = () => {
 
   const [
     registro,
-    { data: dataMutation, loading: loadingMutation, error: errorMutation },
+    // , loading: loadingMutation, error: errorMutation
+    { data: dataMutation },
   ] = useMutation(REGISTRO);
 
   const submitForm = (e) => {
