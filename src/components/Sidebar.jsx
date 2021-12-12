@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "context/authContext";
-// import PrivateComponent from "./PrivateComponent";
+import PrivateComponent from "./PrivateComponent";
 
 
 const SidebarLinks = () => {
@@ -9,11 +9,14 @@ const SidebarLinks = () => {
     <ul className="mt-2">
       <SidebarRoute to="" title="Inicio" icon="fas fa-home" />
 
-      <SidebarRoute
-        to="/usuarios"
-        title="Usuarios"
-        icon="fas fa-user-astronaut"
-      />
+      <PrivateComponent roleList={['ADMINISTRADOR','LIDER']}>
+        <SidebarRoute
+          to="/usuarios"
+          title="Usuarios"
+          icon="fas fa-user-astronaut"
+        />
+      </PrivateComponent>
+
       <SidebarRoute to="/page2" title="Proyectos" icon="fas fa-space-shuttle" />
       <SidebarRoute
         to="/category1"
@@ -26,7 +29,6 @@ const SidebarLinks = () => {
         icon="fas fa-globe-americas"
       />
       <Logout />
-
     </ul>
   );
 };
@@ -48,7 +50,6 @@ const Logout = () => {
     </li>
   );
 };
-
 
 const Logo = () => {
   return (

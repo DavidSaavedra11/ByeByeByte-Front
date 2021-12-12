@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom';
 import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enum';
 
 const IndexUsuarios = () => {
-  const { data, error, loading } = useQuery(GET_USUARIOS);
+  const { data, error, loading } = useQuery(GET_USUARIOS, {
+    // pollInterval: 10,
+  });
 
   useEffect(() => {
     console.log('data servidor', data);

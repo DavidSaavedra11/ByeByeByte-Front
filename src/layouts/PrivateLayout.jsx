@@ -36,12 +36,12 @@ const PrivateLayout = () => {
   }, [dataMutation, setToken, loadingAuth, navigate]);
 
   if (loadingMutation || loadingAuth) return <div>Loading...</div>;
-
+  // h-screen flex-no-wrap
   return (
-    <div className="flex flex-col md:flex-row flex-no-wrap h-screen">
+    <div className="flex flex-col md:flex-row h-screen w-full  ">
       <Sidebar />
       <div className="flex w-full h-full">
-        <div className="w-full h-full  overflow-y-scroll">
+        <div className="w-full h-full  overflow-y-scroll flex-no-wrap">
           <Outlet />
         </div>
       </div>
