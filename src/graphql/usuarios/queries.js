@@ -28,4 +28,19 @@ const GET_USUARIO = gql`
   }
 `;
 
-export { GET_USUARIOS, GET_USUARIO };
+const GET_PERFIL = gql`
+  query UsuarioPerfil {
+    UsuarioPerfil {
+      _id
+      nombre
+      apellido
+      correo
+      estado
+      identificacion
+      rol
+    }
+  }
+`;
+
+
+export { GET_USUARIOS, GET_USUARIO, GET_PERFIL };

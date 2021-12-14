@@ -2,21 +2,41 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "context/authContext";
 import PrivateComponent from "./PrivateComponent";
-
+import { useUser } from "context/userContext";
 
 const SidebarLinks = () => {
+  const { userData } = useUser();
+  const nameProfile = `${userData.nombre}`;
+  const rolProfile = `${userData.rol}`;
+  const profile = () => {
+    return (
+      <div>
+        <div className="flex flex-col items-center text-green-500 font-extrabold">
+          Hola!.. <br />
+          <label className="text-xs text-yellow-400">
+            {nameProfile.toUpperCase()}
+          </label>
+        </div>
+        <div className="flex flex-col items-center text-xs font-extrabold text-black">
+          Tu Rol
+          <label className="text-xs text-green-900"> {rolProfile}</label>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <ul className="mt-2">
+      <SidebarRoute to="/profile" title={profile()} icon="fas fa-user" />
       <SidebarRoute to="" title="Inicio" icon="fas fa-home" />
 
-      <PrivateComponent roleList={['ADMINISTRADOR','LIDER']}>
+      <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
         <SidebarRoute
           to="/usuarios"
           title="Usuarios"
           icon="fas fa-user-astronaut"
         />
       </PrivateComponent>
-
       <SidebarRoute to="/page2" title="Proyectos" icon="fas fa-space-shuttle" />
       <SidebarRoute
         to="/category1"
@@ -37,7 +57,9 @@ const Logout = () => {
   const { setToken } = useAuth();
   const deleteToken = () => {
     console.log("eliminar token");
-    setToken(null);
+    setToken("");
+    localStorage.clear();
+    window.location.reload(true);
   };
   return (
     <li onClick={() => deleteToken()}>
@@ -54,7 +76,7 @@ const Logout = () => {
 const Logo = () => {
   return (
     <div className="py-3 w-full flex flex-col items-center justify-center">
-      <img src="logo.png" alt="Logo" className="h-18" />
+      <img src="logo.png" alt="Logo" className="h-16" />
       <span className=" text-xl font-bold text-center">
         Gestor de Proyectos ByeByeByte
       </span>

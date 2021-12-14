@@ -6,11 +6,11 @@ import Input from "components/Input";
 import ButtonLoading from "components/ButtonLoading";
 import useFormData from "hooks/useFormData";
 import { toast } from "react-toastify";
-import { EDITAR_USUARIO } from "graphql/usuarios/mutations";
+import { EDITAR_PERFIL } from "graphql/usuarios/mutations";
 import DropDown from "components/Dropdown";
 import { Enum_EstadoUsuario } from "utils/enum";
 
-const EditarUsuario = () => {
+const EditarPerfil = () => {
   const { form, formData, updateFormData } = useFormData(null);
   const { _id } = useParams();
 
@@ -27,7 +27,7 @@ const EditarUsuario = () => {
   const [
     editarUsuario,
     { data: mutationData, loading: mutationLoading, error: mutationError },
-  ] = useMutation(EDITAR_USUARIO);
+  ] = useMutation(EDITAR_PERFIL, { refetchQueries: [{ quiery: GET_USUARIO }] });
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -58,11 +58,11 @@ const EditarUsuario = () => {
 
   return (
     <div className="flew flex-col w-full h-full items-center justify-center p-10">
-      <Link to="/usuarios">
+      <Link to="/profile">
         <i className="fas fa-arrow-left text-gray-600 cursor-pointer font-bold text-xl hover:text-gray-900" />
       </Link>
       <h1 className="m-4 text-3xl text-gray-800 font-bold text-center">
-        Editar Usuario
+        Editar Perfil
       </h1>
       <form
         onSubmit={submitForm}
@@ -98,13 +98,13 @@ const EditarUsuario = () => {
           defaultValue={queryData.Usuario.identificacion}
           required={true}
         />
-        <DropDown
+        {/* <DropDown
           label="Estado de la persona:"
           name="estado"
           defaultValue={queryData.Usuario.estado}
           required={true}
           options={Enum_EstadoUsuario}
-        />
+        /> */}
         <span>Rol del usuario: {queryData.Usuario.rol}</span>
         <ButtonLoading
           disabled={Object.keys(formData).length === 0}
@@ -116,4 +116,4 @@ const EditarUsuario = () => {
   );
 };
 
-export default EditarUsuario;
+export default EditarPerfil;

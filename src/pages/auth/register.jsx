@@ -9,16 +9,18 @@ import { REGISTRO } from "graphql/auth/mutations";
 import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router";
 import { useAuth } from "context/authContext";
+import { useUser } from "context/userContext";
+
 
 const Register = () => {
   const { setToken } = useAuth();
   const navigate = useNavigate();
   const { form, formData, updateFormData } = useFormData();
+  const { userData } = useUser();
 
   const [
     registro,
-    // , loading: loadingMutation, error: errorMutation
-    { data: dataMutation },
+    { data: dataMutation, loading: loadingMutation, error: errorMutation },
   ] = useMutation(REGISTRO);
 
   const submitForm = (e) => {
@@ -28,9 +30,13 @@ const Register = () => {
 
   useEffect(() => {
     if (dataMutation) {
-      if (dataMutation.registro.token) {
+      console.log("dataMutation", dataMutation);
+      console.log("dataMutation.registro.token: ", dataMutation.registro.token);
+      if (dataMutation.registro.token && userData.estado ==="AUTORIZADO") {
         setToken(dataMutation.registro.token);
-        navigate("/");
+        navigate("/");  
+      } else {
+        navigate("/auth/validateRegister");
       }
     }
   }, [dataMutation, setToken, navigate]);

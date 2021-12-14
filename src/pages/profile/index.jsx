@@ -1,22 +1,29 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_USUARIOS } from 'graphql/usuarios/queries';
-import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
-import { Enum_Rol, Enum_EstadoUsuario } from 'utils/enum';
+import React, { useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_PERFIL } from "graphql/usuarios/queries";
+import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { Enum_Rol, Enum_EstadoUsuario } from "utils/enum";
+import { useUser } from "context/userContext";
+import useFormData from "hooks/useFormData";
 
-const IndexUsuarios = () => {
-  const { data, error, loading } = useQuery(GET_USUARIOS, {
+const IndexProfile = () => {
+    const { userData } = useUser();
+    console.log('userData', userData._id)
+
+  const { data, error, loading } = useQuery(GET_PERFIL, {
     // pollInterval: 10,
   });
+ 
+
 
   useEffect(() => {
-    console.log('data servidor', data);
+    console.log("data servidor", data);
   }, [data]);
 
   useEffect(() => {
     if (error) {
-      toast.error('Error consultando los Usuarios');
+      toast.error("Error consultando los Usuarios");
     }
   }, [error]);
 
@@ -24,9 +31,7 @@ const IndexUsuarios = () => {
 
   return (
     <div className="bg-red-200 h-full">
-      <span className="flex flex-col items-center text-2xl m-2 font-extrabold">
-        Usuarios{" "}
-      </span>
+      <span className="flex flex-col items-center text-2xl m-2 font-extrabold">Perfil </span>
 
       <table className="tabla">
         <thead>
@@ -42,7 +47,7 @@ const IndexUsuarios = () => {
         </thead>
         <tbody>
           {data &&
-            data.Usuarios.map((u) => {
+            data.UsuarioPerfil.map((u) => {
               return (
                 <tr key={u._id}>
                   <td>{u.nombre}</td>
@@ -52,7 +57,7 @@ const IndexUsuarios = () => {
                   <td>{Enum_Rol[u.rol]}</td>
                   <td>{Enum_EstadoUsuario[u.estado]}</td>
                   <td>
-                    <Link to={`/usuarios/editar/${u._id}`}>
+                    <Link to={`/profile/editar/${u._id}`}>
                       <i className="fas fa-pen text-yellow-700 hover:text-red-400 cursor-pointer flex justify-center" />
                     </Link>
                   </td>
@@ -65,4 +70,4 @@ const IndexUsuarios = () => {
   );
 };
 
-export default IndexUsuarios;
+export default IndexProfile;

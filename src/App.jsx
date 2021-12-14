@@ -22,11 +22,16 @@ import Register from "pages/auth/register";
 import Login from "pages/auth/login";
 import { AuthContext } from "context/authContext";
 import jwt_decode from "jwt-decode";
+import ValidateRegister from "pages/auth/validateRegister";
+import IndexProfile from "pages/profile";
+import EditarPerfil from "pages/profile/editar";
 
 // import PrivateRoute from 'components/PrivateRoute';
+//  http://localhost:4000/graphql
+//https://lit-shore-10436.herokuapp.com/graphql
 
 const httpLink = createHttpLink({
-  uri: "https://lit-shore-10436.herokuapp.com/graphql",
+  uri: "http://localhost:4000/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -63,6 +68,7 @@ function App() {
   useEffect(() => {
     if (authToken) {
       const decoded = jwt_decode(authToken);
+      console.log("decoded token", decoded);
       setUserData({
         _id: decoded._id,
         nombre: decoded.nombre,
@@ -70,6 +76,7 @@ function App() {
         identificacion: decoded.identificacion,
         correo: decoded.correo,
         rol: decoded.rol,
+        estado: decoded.estado,
       });
     }
   }, [authToken]);
@@ -90,10 +97,14 @@ function App() {
                 <Route path="page2" element={<Page2 />} />
                 <Route path="category1" element={<IndexCategory1 />} />
                 <Route path="category1/page1" element={<Category1 />} />
+                <Route path="profile" element={<IndexProfile />} />
+                <Route path="/profile/editar/:_id" element={<EditarPerfil />} />
               </Route>
+
               <Route path="/auth" element={<AuthLayout />}>
                 <Route path="register" element={<Register />} />
                 <Route path="login" element={<Login />} />
+                <Route path="validateRegister" element={<ValidateRegister />} />
               </Route>
             </Routes>
           </BrowserRouter>
