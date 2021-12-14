@@ -31,7 +31,7 @@ import EditarPerfil from "pages/profile/editar";
 //https://lit-shore-10436.herokuapp.com/graphql
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://lit-shore-10436.herokuapp.com/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
