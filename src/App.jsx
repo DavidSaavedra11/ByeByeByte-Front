@@ -25,6 +25,8 @@ import jwt_decode from "jwt-decode";
 import ValidateRegister from "pages/auth/validateRegister";
 import IndexProfile from "pages/profile";
 import EditarPerfil from "pages/profile/editar";
+import IndexProyectos from "pages/proyectos/Index";
+import NuevoProyecto from "pages/proyectos/NuevoProyecto";
 
 // import PrivateRoute from 'components/PrivateRoute';
 //  http://localhost:4000/graphql
@@ -94,6 +96,8 @@ function App() {
                   path="/usuarios/editar/:_id"
                   element={<EditarUsuario />}
                 />
+                <Route path="/proyectos" element={<IndexProyectos />} />
+                <Route path="/proyectos/nuevo" element={<NuevoProyecto />} />
                 <Route path="page2" element={<Page2 />} />
                 <Route path="category1" element={<IndexCategory1 />} />
                 <Route path="category1/page1" element={<Category1 />} />
