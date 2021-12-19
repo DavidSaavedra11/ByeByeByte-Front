@@ -33,8 +33,8 @@ import NuevoProyecto from "pages/proyectos/NuevoProyecto";
 //  https://lit-shore-10436.herokuapp.com/graphql
 
 const httpLink = createHttpLink({
-  // uri: "https://lit-shore-10436.herokuapp.com/graphql",
-  uri: "http://localhost:4000/graphql",
+  uri: "https://lit-shore-10436.herokuapp.com/graphql",
+  // uri: "http://localhost:4000/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
