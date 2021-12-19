@@ -22,7 +22,7 @@ const EditarPerfil = () => {
     variables: { _id },
   });
 
-  console.log(queryData);
+  console.log('useParams',_id);
 
   const [
     editarUsuario,

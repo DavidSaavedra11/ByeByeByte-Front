@@ -5,9 +5,11 @@ const EDITAR_PROYECTO = gql`
     editarProyecto(_id: $_id, campos: $campos) {
       _id
       estado
+      fase
     }
   }
 `;
+
 
 const CREAR_PROYECTO = gql`
   mutation CrearProyecto(
@@ -15,7 +17,7 @@ const CREAR_PROYECTO = gql`
     $presupuesto: Float!
     $fechaInicio: Date!
     $fechaFin: Date!
-    $lider: String!
+    $lider: String
     $objetivos: [crearObjetivo]
   ) {
     crearProyecto(
@@ -27,6 +29,7 @@ const CREAR_PROYECTO = gql`
       objetivos: $objetivos
     ) {
       _id
+      nombre
     }
   }
 `;

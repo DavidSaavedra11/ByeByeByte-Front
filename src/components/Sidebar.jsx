@@ -37,12 +37,18 @@ const SidebarLinks = () => {
           icon="fas fa-user-astronaut"
         />
       </PrivateComponent>
-      <SidebarRoute to="/page2" title="Proyectos" icon="fas fa-space-shuttle" />
       <SidebarRoute
-        to="/category1"
-        title="Inscripciones"
-        icon="fas fa-meteor"
+        to="/proyectos"
+        title="Proyectos"
+        icon="fas fa-space-shuttle"
       />
+      <PrivateComponent roleList={["ADMINISTRADOR", "LIDER"]}>
+        <SidebarRoute
+          to="/inscripciones"
+          title="Aprobacion Inscripciones"
+          icon="fas fa-meteor"
+        />
+      </PrivateComponent>
       <SidebarRoute
         to="/category1/page1"
         title="Avances"

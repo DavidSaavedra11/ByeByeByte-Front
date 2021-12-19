@@ -28,12 +28,13 @@ import EditarPerfil from "pages/profile/editar";
 import IndexProyectos from "pages/proyectos/Index";
 import NuevoProyecto from "pages/proyectos/NuevoProyecto";
 
-// import PrivateRoute from 'components/PrivateRoute';
+//  import PrivateRoute from 'components/PrivateRoute';
 //  http://localhost:4000/graphql
-//https://lit-shore-10436.herokuapp.com/graphql
+//  https://lit-shore-10436.herokuapp.com/graphql
 
 const httpLink = createHttpLink({
-  uri: "https://lit-shore-10436.herokuapp.com/graphql",
+  // uri: "https://lit-shore-10436.herokuapp.com/graphql",
+  uri: "http://localhost:4000/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -98,6 +99,7 @@ function App() {
                 />
                 <Route path="/proyectos" element={<IndexProyectos />} />
                 <Route path="/proyectos/nuevo" element={<NuevoProyecto />} />
+                
                 <Route path="page2" element={<Page2 />} />
                 <Route path="category1" element={<IndexCategory1 />} />
                 <Route path="category1/page1" element={<Category1 />} />

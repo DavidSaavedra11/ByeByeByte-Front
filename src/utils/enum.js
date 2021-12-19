@@ -10,10 +10,19 @@ const Enum_EstadoUsuario = {
   NO_AUTORIZADO: 'No autorizado',
 };
 
+const Enum_FaseProyecto = {
+    INICIADO: 'Iniciado',
+    EN_DESARROLLO: 'En Desarrollo',
+    TERMINADO:'Terminado',
+    NULO:'Nulo'
+};
+
 const Enum_EstadoProyecto = {
   ACTIVO: "Activo",
   INACTIVO: "Inactivo",
+  CREADO: "Creado sin aprobar",
 };
+
 
 const Enum_TipoObjetivo = {
   GENERAL: "General",
@@ -21,4 +30,10 @@ const Enum_TipoObjetivo = {
 };
 
 
-export { Enum_Rol, Enum_EstadoUsuario, Enum_EstadoProyecto, Enum_TipoObjetivoyar };
+export {
+  Enum_Rol,
+  Enum_EstadoUsuario,
+  Enum_EstadoProyecto,
+  Enum_TipoObjetivo,
+  Enum_FaseProyecto,
+};
