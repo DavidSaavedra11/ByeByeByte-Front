@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 const PROYECTOS = gql`
   query Proyectos {
@@ -7,6 +7,7 @@ const PROYECTOS = gql`
       nombre
       estado
       fase
+      presupuesto
       objetivos {
         _id
         descripcion
@@ -28,4 +29,29 @@ const PROYECTOS = gql`
   }
 `;
 
-export { PROYECTOS };
+const PROJECTACTIVE = gql`
+  query ProyectosActivos {
+    ProyectosActivos {
+      _id
+      nombre
+      estado
+      fase
+      presupuesto
+      inscripciones {
+        _id
+        fechaEgreso
+      }
+      lider {
+        nombre
+        apellido
+        correo
+      }
+      objetivos {
+        descripcion
+        tipo
+      }
+    }
+  }
+`;
+
+export { PROYECTOS, PROJECTACTIVE };

@@ -49,11 +49,11 @@ const SidebarLinks = () => {
           icon="fas fa-meteor"
         />
       </PrivateComponent>
-      <SidebarRoute
-        to="/category1/page1"
+      {/* <SidebarRoute
+        to="/avances"
         title="Avances"
         icon="fas fa-globe-americas"
-      />
+      /> */}
       <Logout />
     </ul>
   );
